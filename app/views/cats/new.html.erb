@@ -1,0 +1,44 @@
+<h1>Add a cat</h1>
+
+<form action="<%= cats_url %>" method="post">
+<section>
+  <label>
+    Name
+    <input type="text" name="cat[name]" placeholder="Enter your cat name here..." />
+  </label>
+</section>
+<section>
+  <label>Sex: </label>
+  <label>
+    M
+    <input type="radio" name="cat[sex]" value="M" />
+  </label>
+  <label>
+    F
+    <input type="radio" name="cat[sex]" value="F" />
+  </label>
+</section>
+<section>
+  <label for="cat_color">Color</label>
+  <select id="cat_color" name="cat[color]">
+    <% @colors.each do |color| %>
+    <option value="<%= color %>"><%= color %></option>
+    <% end %>
+
+  </select>
+</section>
+<section>
+  <label>Birthdate:
+    <input type="date" name="cat[birth_date]" />
+  </label>
+
+</section>
+<section>
+  <label>Description:
+    <textarea name="cat[description]"></textarea>
+  </label>
+</section>
+<section>
+  <button>Save</button>
+</section>
+</form>

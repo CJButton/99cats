@@ -1,0 +1,22 @@
+<h1><%= @cat.name %></h1>
+
+<table style="border: 2px solid #0f0">
+  <tr>
+    <th>Birthdate</td>
+    <td><%= @cat.birth_date %></td>
+  </tr>
+  <tr>
+    <th>Sex</td>
+    <td><%= @cat.sex %></td>
+  </tr>
+  <tr>
+    <th>Color</td>
+    <td><%= @cat.color %></td>
+  </tr>
+</table>
+<% if @cat.description %>
+  <h2>Description:</h2>
+  <p>
+  <%= @cat.description %>
+  </p>
+<% end %>
