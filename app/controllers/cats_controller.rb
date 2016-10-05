@@ -1,25 +1,30 @@
 class CatsController < ApplicationController
+  before_action :set_cat, only: [:show, :edit, :update, :destroy]
+
   def index
     @cats = Cat.all
   end
 
   def show
-    @cat = Cat.find(params[:id])
   end
 
   def edit
     @colors = ["Blue", "Black", "Purple", "White", "Rainbow"]
-    @cat = Cat.find(params[:id])
   end
 
   def new
+    @cat = Cat.new
     @colors = ["Blue", "Black", "Purple", "White", "Rainbow"]
   end
 
   def update
-    @cat = Cat.find(params[:id])
     @cat.update(required_params)
     redirect_to cat_url(@cat.id)
+  end
+
+  def destroy
+    @cat.destroy
+    redirect_to cats_url
   end
 
   def create
@@ -33,6 +38,10 @@ class CatsController < ApplicationController
   end
 
   private
+  def set_cat
+    @cat = Cat.find(params[:id])
+  end
+
   def required_params
     params.require(:cat).permit(:name, :birth_date, :sex, :description, :color)
   end

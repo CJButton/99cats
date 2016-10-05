@@ -1,0 +1,28 @@
+<%= link_to "<< Back", cats_url %>
+<h1>New Cat Rental Request</h1>
+
+<form action="<%= cat_rental_requests_url %>" method="post">
+  <section>
+    <label for="cats">Cats</label>
+    <select id="cats" name="cat_rental_request[cat_id]">
+      <% @cats.each do |cat| %>
+        <option value="<%= cat.id %>" <% if @selected_cat == cat.id %>selected<% end %>><%= cat.name %></option>
+      <% end %>
+    </select>
+  </section>
+  <section>
+    <label>
+      Start Date
+      <input type="date" name="cat_rental_request[start_date]" placeholder="Choose when you want to start your rental" />
+    </label>
+  </section>
+  <section>
+    <label>
+      Return Date
+      <input type="date" name="cat_rental_request[end_date]" placeholder="Choose when you want to return your rental" />
+    </label>
+  </section>
+  <section>
+    <button>Submit</button>
+  </section>
+</form>
