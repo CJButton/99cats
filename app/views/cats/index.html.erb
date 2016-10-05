@@ -9,7 +9,7 @@
     <th>Sex</th>
     <th>Actions</th>
   </tr>
-  <% @cats.each do |cat| %>
+  <% @cats.order(:name).each do |cat| %>
     <tr>
       <td><%= cat.name %></td>
       <td><%= cat.age %></td>

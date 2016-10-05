@@ -1,6 +1,12 @@
 <%= link_to "<< Back", cats_url %>
 <h1>New Cat Rental Request</h1>
-
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <div style="width: 100%;">
+      <strong>Error: </strong> <%= error %>
+    </div>
+  <% end %>
+<% end %>
 <form action="<%= cat_rental_requests_url %>" method="post">
   <section>
     <label for="cats">Cats</label>
@@ -13,13 +19,19 @@
   <section>
     <label>
       Start Date
-      <input type="date" name="cat_rental_request[start_date]" placeholder="Choose when you want to start your rental" />
+      <input type="date" name="cat_rental_request[start_date]" />
     </label>
   </section>
   <section>
     <label>
       Return Date
-      <input type="date" name="cat_rental_request[end_date]" placeholder="Choose when you want to return your rental" />
+      <input type="date" name="cat_rental_request[end_date]" />
+    </label>
+  </section>
+  <section>
+    <label>
+      Why should you be allowed to rent this cat?
+      <textarea name="cat_rental_request[plea]"></textarea>
     </label>
   </section>
   <section>
